@@ -136,11 +136,10 @@ sub _wmm {
 
      return @$wmm;
 }
-my $DEG2RAD = atan2(1,1)/45;
-
-
 sub _calculate {
     my ($lon, $lat, $hgt, $yr) = @_;
+    
+    my $DEG2RAD = atan2(1,1)/45;
     $lon *= $DEG2RAD;
     $lat *= $DEG2RAD;
 
