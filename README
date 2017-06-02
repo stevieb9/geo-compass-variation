@@ -5,14 +5,14 @@ NAME
 
 SYNOPSIS
 
-         use Magnetic::Declination qw(mag_dec mag_inc);
+        use Magnetic::Declination qw(mag_dec mag_inc);
     
-         my $lat = 53.1234567;
-         my $lon = -114.1234567;
-         my $alt = 1098;
+        my $lat = 53.1234567;
+        my $lon = -114.1234567;
+        my $alt = 1098;
     
-         my $declination = mag_dec($lat, $lon, $alt);
-         my $inclination = mag_inc($lat, $lon, $alt);
+        my $declination = mag_dec($lat, $lon, $alt);
+        my $inclination = mag_inc($lat, $lon, $alt);
 
 DESCRIPTION
 
@@ -27,11 +27,11 @@ EXPORT_OK
 
     All functions must be imported explicitly:
 
-         use Magnetic::Declination qw(mag_dec mag_inc);
+        use Magnetic::Declination qw(mag_dec mag_inc);
     
-         # or
+        # or
     
-         use Magnetic::Declination qw(:all);
+        use Magnetic::Declination qw(:all);
 
 FUNCTIONS
 
@@ -42,21 +42,21 @@ FUNCTIONS
 
     Parameters:
 
-         $lat
+        $lat
 
     Mandatory, Float: Latitude, in signed notation (eg: 53.1111111.
     Negative is South and positive is North of the Equator.
 
-         $lon
+        $lon
 
     Mandatory, Float: Longitude, in signed notiation (eg: -114.11111.
     Negative is West and positive is East of the Prime Meridian.
 
-         $alt
+        $alt
 
     Optional, Integer: Altitude above sea level, in metres. Defaults to 0.
 
-         $year
+        $year
 
     Optional, Integer|Float: The year to base the calculation from.
     Defaults to 2017.5.
