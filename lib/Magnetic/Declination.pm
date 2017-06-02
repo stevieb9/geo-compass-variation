@@ -1,9 +1,19 @@
 package Magnetic::Declination;
 
-use strict;
+use strict; 
 use warnings;
 
 our $VERSION = '0.01';
+
+use Exporter qw(import);
+ 
+our @EXPORT_OK = qw(
+    mag_dec
+    mag_inc
+);
+ 
+our %EXPORT_TAGS;
+$EXPORT_TAGS{all} = [@EXPORT_OK];
 
 sub mag_dec {
      my ($lat, $lon, $alt, $year) = _args(@_);
@@ -17,7 +27,7 @@ sub mag_inc {
 }
 sub _args {
      my ($lat, $lon, $alt, $year) = @_;
-
+     
      if ($lat < -180 || $lat > 180){
          die "Latitude must be between -180 and 180 degrees\n";
      }
@@ -137,7 +147,7 @@ sub _wmm {
      return @$wmm;
 }
 sub _calculate {
-    my ($lon, $lat, $hgt, $yr) = @_;
+    my ($lat, $lon, $hgt, $yr) = @_;
     
     my $DEG2RAD = atan2(1,1)/45;
     $lon *= $DEG2RAD;
@@ -223,8 +233,7 @@ sub _calculate {
 }
 sub _pod_placeholder {}
 
-1;
-__END__
+1; __END__
 
 =head1 NAME
 
@@ -243,9 +252,8 @@ Magnetic::Declination - Accurately calculate magnetic declination and inclinatio
 
 =head1 DESCRIPTION
 
-This module calculates and returns the Magnetic declination and inclination
-(dip) calculations based on WMM earth magnetism model for a specified
-latitude and longitude pair.
+This module calculates and returns the Magnetic declination and inclination (dip) calculations 
+based on WMM earth magnetism model for a specified latitude and longitude pair.
 
 See L<NOAA|https://www.ngdc.noaa.gov/geomag/WMM/DoDWMM.shtml> for details.
 
@@ -261,7 +269,7 @@ All functions must be imported explicitly:
 
 =head1 FUNCTIONS
 
-=head2 mag_dec($lat, $lon, $alt, $year)
+=head2 mag_dec
 
 Calculates and returns the magnetic declination of a pair of GPS coordinates.
 
@@ -269,13 +277,13 @@ Parameters:
 
      $lat
 
-Mandatory, Float: Latitude, in signed notation (eg: C<53.1111111>. Negative is
-South and positive is North of the Equator.
+Mandatory, Float: Latitude, in signed notation (eg: C<53.1111111>. Negative is South and positive 
+is North of the Equator.
 
      $lon
 
-Mandatory, Float: Longitude, in signed notiation (eg: C<-114.11111>. Negative
-is West and positive is East of the Prime Meridian.
+Mandatory, Float: Longitude, in signed notiation (eg: C<-114.11111>. Negative is West and positive 
+is East of the Prime Meridian.
 
      $alt
 
@@ -283,19 +291,18 @@ Optional, Integer: Altitude above sea level, in metres. Defaults to C<0>.
 
      $year
 
-Optional, Integer|Float: The year to base the calculation from. Defaults to
-C<2017.5>.
+Optional, Integer|Float: The year to base the calculation from. Defaults to C<2017.5>.
 
 Return: A floating point number representing the magnetic declination.
 
-=head2 msg_inc($lat, $lon, $alt, $year)
+=head2 mag_inc
 
 Calculates and returns the magnetic inclination of a pair of GPS coordinates.
 
 Parameters:
 
-Parameters are exactly the same as for the L</mag_dec> function. Please review
-that documentation section for full details.
+Parameters are exactly the same as for the L</mag_dec> function. Please review that documentation 
+section for full details.
 
 Return: A floating point number representing the magnetic inclination.
 
@@ -305,20 +312,20 @@ Steve Bertrand, C<< <steveb at cpan.org> >>
 
 =head1 ACKNOWLEDGEMENTS
 
-All the thanks goes out to L<no_slogan|http://perlmonks.org/?node_id=78006> of
+All the thanks goes out to L<no_slogan|http://perlmonks.org/?node_id=78006> of 
 L<Perlmonks|http://perlmonks.org> for all of the core functionality.
 
-It was presented L<here|http://perlmonks.org/?node_id=1191907>, in response to
-L<this thread|http://perlmonks.org/?node_id=1191753> I had started regarding a
-code review of some prototype code I wrote to calculate the direction between
-two pairs of GPS coordinates.
+It was presented L<here|http://perlmonks.org/?node_id=1191907>, in response to L<this 
+thread|http://perlmonks.org/?node_id=1191753> I had started regarding a code review of some 
+prototype code I wrote to calculate the direction between two pairs of GPS coordinates.
 
 =head1 LICENSE AND COPYRIGHT
 
 Copyright 2017 Steve Bertrand.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This program is free software; you can redistribute it and/or modify it under the terms of either: 
+the GNU General Public License as published by the Free Software Foundation; or the Artistic 
+License.
 
 See L<http://dev.perl.org/licenses/> for more information.
+

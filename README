@@ -35,7 +35,7 @@ EXPORT_OK
 
 FUNCTIONS
 
- mag_dec($lat, $lon, $alt, $year)
+ mag_dec
 
     Calculates and returns the magnetic declination of a pair of GPS
     coordinates.
@@ -63,7 +63,7 @@ FUNCTIONS
 
     Return: A floating point number representing the magnetic declination.
 
- msg_inc($lat, $lon, $alt, $year)
+ mag_inc
 
     Calculates and returns the magnetic inclination of a pair of GPS
     coordinates.
