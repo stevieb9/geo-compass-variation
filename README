@@ -1,55 +1,102 @@
-Magnetic-Declination
+NAME
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+    Magnetic::Declination - Accurately calculate magnetic declination and
+    inclination
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+SYNOPSIS
 
+         use Magnetic::Declination qw(mag_dec mag_inc);
+    
+         my $lat = 53.1234567;
+         my $lon = -114.1234567;
+         my $alt = 1098;
+    
+         my $declination = mag_dec($lat, $lon, $alt);
+         my $inclination = mag_inc($lat, $lon, $alt);
 
-INSTALLATION
+DESCRIPTION
 
-To install this module, run the following commands:
+    This module calculates and returns the Magnetic declination and
+    inclination (dip) calculations based on WMM earth magnetism model for a
+    specified latitude and longitude pair.
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+    See NOAA <https://www.ngdc.noaa.gov/geomag/WMM/DoDWMM.shtml> for
+    details.
 
-SUPPORT AND DOCUMENTATION
+EXPORT_OK
 
-After installing, you can find documentation for this module with the
-perldoc command.
+    All functions must be imported explicitly:
 
-    perldoc Magnetic::Declination
+         use Magnetic::Declination qw(mag_dec mag_inc);
+    
+         # or
+    
+         use Magnetic::Declination qw(:all);
 
-You can also look for information at:
+FUNCTIONS
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Magnetic-Declination
+ mag_dec($lat, $lon, $alt, $year)
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Magnetic-Declination
+    Calculates and returns the magnetic declination of a pair of GPS
+    coordinates.
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Magnetic-Declination
+    Parameters:
 
-    Search CPAN
-        http://search.cpan.org/dist/Magnetic-Declination/
+         $lat
 
+    Mandatory, Float: Latitude, in signed notation (eg: 53.1111111.
+    Negative is South and positive is North of the Equator.
+
+         $lon
+
+    Mandatory, Float: Longitude, in signed notiation (eg: -114.11111.
+    Negative is West and positive is East of the Prime Meridian.
+
+         $alt
+
+    Optional, Integer: Altitude above sea level, in metres. Defaults to 0.
+
+         $year
+
+    Optional, Integer|Float: The year to base the calculation from.
+    Defaults to 2017.5.
+
+    Return: A floating point number representing the magnetic declination.
+
+ msg_inc($lat, $lon, $alt, $year)
+
+    Calculates and returns the magnetic inclination of a pair of GPS
+    coordinates.
+
+    Parameters:
+
+    Parameters are exactly the same as for the "mag_dec" function. Please
+    review that documentation section for full details.
+
+    Return: A floating point number representing the magnetic inclination.
+
+AUTHOR
+
+    Steve Bertrand, <steveb at cpan.org>
+
+ACKNOWLEDGEMENTS
+
+    All the thanks goes out to no_slogan
+    <http://perlmonks.org/?node_id=78006> of Perlmonks for all of the core
+    functionality.
+
+    It was presented here <http://perlmonks.org/?node_id=1191907>, in
+    response to this thread <http://perlmonks.org/?node_id=1191753> I had
+    started regarding a code review of some prototype code I wrote to
+    calculate the direction between two pairs of GPS coordinates.
 
 LICENSE AND COPYRIGHT
 
-Copyright (C) 2017 Steve Bertrand
+    Copyright 2017 Steve Bertrand.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of either: the GNU General Public License as published
+    by the Free Software Foundation; or the Artistic License.
 
-See L<http://dev.perl.org/licenses/> for more information.
+    See http://dev.perl.org/licenses/ for more information.
 
