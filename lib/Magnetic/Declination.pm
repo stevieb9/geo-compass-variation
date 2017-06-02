@@ -145,8 +145,6 @@ sub _calculate {
 
     my @WMM = _wmm();
        
-    warn "Model is valid only from 2015 to 2020" if $yr < 2015 || $yr > 2019;
-
     my ($geo_r, $geo_lat) = do { # geocentric coordinates
        my $A = 6378137; # reference ellipsoid semimajor axis
        my $f = 1 / 298.257223563; # flattening
