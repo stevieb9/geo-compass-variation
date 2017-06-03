@@ -15,18 +15,16 @@ our @EXPORT_OK = qw(
 our %EXPORT_TAGS;
 $EXPORT_TAGS{all} = [@EXPORT_OK];
 
+use constant DEFAULT_YEAR => 2017.5;
+use constant DEFAULT_ALT  => 0;
+
 sub mag_dec {
-    my ($lat, $lon, $alt, $year) = _args(@_);
-    my $declination = _calculate($lat, $lon, $alt, $year);
-    return $declination;
+    return _calculate(_args(@_));
 }
 sub mag_inc {
-    my ($lat, $lon, $alt, $year) = _args(@_);
-    my $inclination = (_calculate($lat, $lon, $alt, $year))[1];
-    return $inclination;
+    return (_calculate(_args(@_)))[1];
 }
 sub _args {
-    
     my ($lat, $lon, $alt, $year) = @_;
 
     die "Latitude must be a number\n" if $lat !~ /^-?\d+(?:\.\d+)?$/;
@@ -42,7 +40,7 @@ sub _args {
        die "Longitude must be between -180 and 180 degrees\n";
     }
 
-    $alt = defined $alt ? $alt : 0;
+    $alt = defined $alt ? $alt : DEFAULT_ALT;
 
     if (defined $year){
        if ($year < 2015 || $year > 2019){
@@ -50,7 +48,7 @@ sub _args {
        }
     }
     else {
-       $year = 2017.5;
+       $year = DEFAULT_YEAR;
     }
 
     return ($lat, $lon, $alt, $year);
