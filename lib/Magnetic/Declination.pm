@@ -28,7 +28,13 @@ sub mag_inc {
 sub _args {
     
     my ($lat, $lon, $alt, $year) = @_;
-    
+
+    die "Latitude must be a number\n" if $lat !~ /^-?\d+(?:\.\d+)?$/;
+    die "Longitude must be a number\n" if $lon !~ /^-?\d+(?:\.\d+)?$/;
+    die "Altitude must be an integer\n" if defined $alt && $alt !~ /^\d+$/;
+    die "Year must be a number\n"
+      if defined $year && $year !~ /^-?\d+(?:\.\d+)?$/;
+
     if ($lat < -180 || $lat > 180){
        die "Latitude must be between -180 and 180 degrees\n";
     }
@@ -58,12 +64,23 @@ sub _calculate {
 
     my @WMM = _wmm();
       
-    my ($geo_r, $geo_lat) = do { # geocentric coordinates
-        my $A = 6378137; # reference ellipsoid semimajor axis
-        my $f = 1 / 298.257223563; # flattening
-        my $e2 = $f * (2 - $f); # eccentricity
-        my $Rc = $A / sqrt(1 - $e2 * sin($lat)**2); # radius of curvature
-        my $p = ($Rc + $hgt) * cos($lat); # radius in x-y plane
+    my ($geo_r, $geo_lat) = do {
+        # geocentric coordinates
+        my $A = 6378137;
+
+        # reference ellipsoid semimajor axis
+        my $f = 1 / 298.257223563;
+
+        # flattening
+        my $e2 = $f * (2 - $f);
+
+        # eccentricity
+        my $Rc = $A / sqrt(1 - $e2 * sin($lat)**2);
+
+        # radius of curvature
+        my $p = ($Rc + $hgt) * cos($lat);
+
+        # radius in x-y plane
         my $z = ($Rc * (1 - $e2) + $hgt) * sin($lat);
         (sqrt($p*$p + $z*$z), atan2($z, $p))
     };
@@ -100,11 +117,11 @@ sub _calculate {
          }
     }
 
-    my $X = 0; # magnetic field north component in nT
-    my $Y = 0; # east component
-    my $Z = 0; # vertical component
+    my $X = 0;                  # magnetic field north component in nT
+    my $Y = 0;                  # east component
+    my $Z = 0;                  # vertical component
     my $t = $yr - 2015;
-    my $r = 6371200 / $geo_r; # radius relative to geomagnetic reference
+    my $r = 6371200 / $geo_r;   # radius relative to geomagnetic reference
     my $R = $r * $r;
     my @c = map cos($_*$lon), 0 .. $#WMM;
     my @s = map sin($_*$lon), 0 .. $#WMM;

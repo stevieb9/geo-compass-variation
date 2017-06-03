@@ -8,6 +8,7 @@ t/00-load.t
 t/01-data_year.t
 t/05-dec.t
 t/10-inc.t
+t/15-args.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t

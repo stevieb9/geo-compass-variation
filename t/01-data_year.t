@@ -15,7 +15,35 @@ my $ok = eval {
     1;
 };
 
-is $ok, 1, "data year is within spec";
+is $ok, 1, "new WWM data not yet available";
+
+$ok = eval {
+    mag_dec(10, 10, 0, 2015);
+    1;
+};
+
+is $ok, 1, "2015 is a valid year";
+
+$ok = eval {
+    mag_dec(10, 10, 0, 2019);
+    1;
+};
+
+is $ok, 1, "2019 is a valid year";
+
+$ok = eval {
+    mag_dec(10, 10, 0, 2014);
+    1;
+};
+
+is $ok, undef, "fail prior to 2015";
+
+$ok = eval {
+    mag_dec(10, 10, 0, 2020);
+    1;
+};
+
+is $ok, undef, "fail after 2019";
 
 done_testing;
 
