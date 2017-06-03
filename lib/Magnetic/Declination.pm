@@ -25,6 +25,8 @@ sub mag_inc {
     return (_calculate(_args(@_)))[1];
 }
 sub _args {
+    die "Minimum latitude and longitude must be sent in\n" if @_ < 2;
+
     my ($lat, $lon, $alt, $year) = @_;
 
     die "Latitude must be a number\n" if $lat !~ /^-?\d+(?:\.\d+)?$/;

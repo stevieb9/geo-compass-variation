@@ -7,6 +7,25 @@ use Test::More;
 my $m = 'Magnetic::Declination';
 my $ok;
 
+{ # not enough args
+
+    $ok = eval {
+        Magnetic::Declination::_args();
+        1;
+    };
+
+    is $ok, undef, "0 args: minimum two args required";
+    like $@, qr/Minimum latitude and longitude/, "and error is sane";
+
+    $ok = eval {
+        Magnetic::Declination::_args(1);
+        1;
+    };
+
+    is $ok, undef, "1 args: minimum two args required";
+    like $@, qr/Minimum latitude and longitude/, "and error is sane";
+}
+
 { # lat
     $ok = eval {
         Magnetic::Declination::_args(-181, 0);
