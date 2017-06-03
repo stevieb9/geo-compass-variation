@@ -15,8 +15,12 @@ our @EXPORT_OK = qw(
 our %EXPORT_TAGS;
 $EXPORT_TAGS{all} = [@EXPORT_OK];
 
-use constant DEFAULT_YEAR => 2017.5;
-use constant DEFAULT_ALT  => 0;
+use constant {
+    WMM_RELEASE_YEAR    => 2015,
+    WMM_EXPIRE_YEAR     => 2019,
+    DEFAULT_YEAR_ARG    => 2017.5,
+    DEFAULT_ALT_ARG     => 0,
+};
 
 sub mag_dec {
     return _calculate(_args(@_));
@@ -42,15 +46,16 @@ sub _args {
        die "Longitude must be between -180 and 180 degrees\n";
     }
 
-    $alt = defined $alt ? $alt : DEFAULT_ALT;
+    $alt = defined $alt ? $alt : DEFAULT_ALT_ARG;
 
     if (defined $year){
-       if ($year < 2015 || $year > 2019){
-           die "Calculation model is only valid for years 2015 through 2019\n";
+       if ($year < WMM_RELEASE_YEAR || $year > WMM_EXPIRE_YEAR){
+           die "Calculation model has expired: "
+               . WMM_RELEASE_YEAR . '-' . WMM_EXPIRE_YEAR . "\n";
        }
     }
     else {
-       $year = DEFAULT_YEAR;
+       $year = DEFAULT_YEAR_ARG;
     }
 
     return ($lat, $lon, $alt, $year);

@@ -44,6 +44,7 @@ $ok = eval {
 };
 
 is $ok, undef, "fail after 2019";
+like $@, qr/Calculation model has expired:/, "error is sane";
 
 done_testing;
 
