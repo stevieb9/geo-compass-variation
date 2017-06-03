@@ -13,7 +13,7 @@ my $data = [
 ];
 
 for my $t (@$data){
-    is mag_inc($t->[0], $t->[1], $t->[2], $t->[3]), $t->[4], "$t->[5] inclination ok";
+    is mag_inc(@$t), $t->[4], "$t->[5] inclination ok";
 }
 
 done_testing;
