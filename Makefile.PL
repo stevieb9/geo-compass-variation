@@ -4,10 +4,10 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME             => 'Magnetic::Declination',
+    NAME             => 'Geo::Compass::Variation',
     AUTHOR           => q{Steve Bertrand <steveb@cpan.org>},
-    VERSION_FROM     => 'lib/Magnetic/Declination.pm',
-    ABSTRACT_FROM    => 'lib/Magnetic/Declination.pm',
+    VERSION_FROM     => 'lib/Geo/Compass/Variation.pm',
+    ABSTRACT_FROM    => 'lib/Geo/Compass/Variation.pm',
     LICENSE          => 'perl_5',
     PL_FILES         => {},
     MIN_PERL_VERSION => '5.006',
@@ -15,12 +15,12 @@ WriteMakefile(
         'meta-spec' => { version => 2 },
         resources   => {
             bugtracker => {
-                web => 'https://github.com/stevieb9/magnetic-declination/issues',
+                web => 'https://github.com/stevieb9/geo-compass-variation/issues',
             },
             repository => {
                 type => 'git',
-                url => 'https://github.com/stevieb9/magnetic-declination.git',
-                web => 'https://github.com/stevieb9/magnetic-declination',
+                url => 'https://github.com/stevieb9/geo-compass-variation.git',
+                web => 'https://github.com/stevieb9/geo-compass-variation',
             },
         },
     },
@@ -35,5 +35,5 @@ WriteMakefile(
         #'Foo::Bar::Module' => '5.0401',
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean => { FILES => 'Magnetic-Declination-*' },
+    clean => { FILES => 'Geo-Compass-Variation-*' },
 );

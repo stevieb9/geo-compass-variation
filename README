@@ -1,11 +1,11 @@
 NAME
 
-    Magnetic::Declination - Accurately calculate magnetic declination and
+    Geo::Compass::Variation - Accurately calculate magnetic declination and
     inclination
 
 SYNOPSIS
 
-        use Magnetic::Declination qw(mag_dec mag_inc);
+        use Geo::Compass::Variation qw(mag_dec mag_inc);
     
         my $lat = 53.1234567;
         my $lon = -114.1234567;
@@ -27,11 +27,14 @@ EXPORT_OK
 
     All functions must be imported explicitly:
 
-        use Magnetic::Declination qw(mag_dec mag_inc);
+        use Geo::Compass::Variation qw(mag_dec mag_inc);
     
         # or
     
-        use Magnetic::Declination qw(:all);
+        use Geo::Compass::Variation qw(:all);
+
+    Note: The mag_dec function has an alias of mag_var which can be
+    imported explicitly, or with the :all tag.
 
 FUNCTIONS
 
@@ -63,6 +66,10 @@ FUNCTIONS
 
     Return: A floating point number representing the magnetic declination.
 
+ mag_var
+
+    Simply an alias for "mag_dec".
+
  mag_inc
 
     Calculates and returns the magnetic inclination of a pair of GPS
@@ -74,6 +81,14 @@ FUNCTIONS
     review that documentation section for full details.
 
     Return: A floating point number representing the magnetic inclination.
+
+ mag_field
+
+    Core function that calcluates the raw magnetic field north component
+    ($X), the east component ($Y) and the vertical component ($Z).
+
+    Takes the same parameters as "mag_dec". Please see that function's
+    documentation for full details.
 
 AUTHOR
 

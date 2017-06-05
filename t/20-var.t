@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-use Geo::Compass::Variation qw(mag_dec);
+use Geo::Compass::Variation qw(mag_var);
 use Test::More;
 
 my $data = [
@@ -13,7 +13,7 @@ my $data = [
 ];
 
 for my $t (@$data){
-    is mag_dec(@$t), $t->[4], "$t->[5] declination ok";
+    is mag_var(@$t), $t->[4], "$t->[5] declination ok";
 }
 
 done_testing;

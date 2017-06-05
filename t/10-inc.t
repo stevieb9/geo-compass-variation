@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-use Magnetic::Declination qw(mag_inc);
+use Geo::Compass::Variation qw(mag_inc);
 use Test::More;
 
 my $data = [

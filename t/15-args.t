@@ -1,16 +1,16 @@
 use warnings;
 use strict;
 
-use Magnetic::Declination;
+use Geo::Compass::Variation;
 use Test::More;
 
-my $m = 'Magnetic::Declination';
+my $m = 'Geo::Compass::Variation';
 my $ok;
 
 { # not enough args
 
     $ok = eval {
-        Magnetic::Declination::_args();
+        Geo::Compass::Variation::_args();
         1;
     };
 
@@ -18,7 +18,7 @@ my $ok;
     like $@, qr/Minimum latitude and longitude/, "and error is sane";
 
     $ok = eval {
-        Magnetic::Declination::_args(1);
+        Geo::Compass::Variation::_args(1);
         1;
     };
 
@@ -28,7 +28,7 @@ my $ok;
 
 { # lat
     $ok = eval {
-        Magnetic::Declination::_args(-181, 0);
+        Geo::Compass::Variation::_args(-181, 0);
         1;
     };
 
@@ -36,7 +36,7 @@ my $ok;
     like $@, qr/Latitude must be between/, "and error is sane";
 
     $ok = eval {
-        Magnetic::Declination::_args(181, 0);
+        Geo::Compass::Variation::_args(181, 0);
         1;
     };
 
@@ -45,7 +45,7 @@ my $ok;
 
     for (qw(! a A)) {
         $ok = eval {
-            Magnetic::Declination::_args($_, 0);
+            Geo::Compass::Variation::_args($_, 0);
             1;
         };
 
@@ -56,7 +56,7 @@ my $ok;
 { # lon
 
     $ok = eval {
-        Magnetic::Declination::_args(0, -181);
+        Geo::Compass::Variation::_args(0, -181);
         1;
     };
 
@@ -64,7 +64,7 @@ my $ok;
     like $@, qr/Longitude must be between/, "and error is sane";
 
     $ok = eval {
-        Magnetic::Declination::_args(0, 181);
+        Geo::Compass::Variation::_args(0, 181);
         1;
     };
 
@@ -73,7 +73,7 @@ my $ok;
 
     for (qw(! a A)) {
         $ok = eval {
-            Magnetic::Declination::_args(0, $_);
+            Geo::Compass::Variation::_args(0, $_);
             1;
         };
 
@@ -84,14 +84,14 @@ my $ok;
 { # alt
 
     $ok = eval {
-        Magnetic::Declination::_args(0, 0);
+        Geo::Compass::Variation::_args(0, 0);
         1;
     };
 
     is $ok, 1, "default alt is set ok";
 
     $ok = eval {
-        Magnetic::Declination::_args(0, 0, 1100);
+        Geo::Compass::Variation::_args(0, 0, 1100);
         1;
     };
 
@@ -99,7 +99,7 @@ my $ok;
 
     for (qw(! a A 1.1)) {
         $ok = eval {
-            Magnetic::Declination::_args(0, 0, $_);
+            Geo::Compass::Variation::_args(0, 0, $_);
             1;
         };
 
@@ -111,7 +111,7 @@ my $ok;
 
     for (qw(! a A)) {
         $ok = eval {
-            Magnetic::Declination::_args(0, 0, 0, $_);
+            Geo::Compass::Variation::_args(0, 0, 0, $_);
             1;
         };
 

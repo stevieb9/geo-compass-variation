@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-use Magnetic::Declination qw(mag_dec);
+use Geo::Compass::Variation qw(mag_dec);
 use Test::More;
 
 my $year;

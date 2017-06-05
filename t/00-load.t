@@ -4,13 +4,13 @@ use strict;
 use warnings;
 use Test::More;
 
-my $mod = 'Magnetic::Declination';
+my $mod = 'Geo::Compass::Variation';
 
 BEGIN {
-    use_ok( 'Magnetic::Declination' ) || print "Bail out!\n";
+    use_ok( 'Geo::Compass::Variation' ) || print "Bail out!\n";
 }
 
-diag( "Testing Magnetic::Declination $Magnetic::Declination::VERSION, Perl $], $^X" );
+diag( "Testing Geo::Compass::Variation $Geo::Compass::Variation::VERSION, Perl $], $^X" );
 
 can_ok($mod, 'mag_dec');
 can_ok($mod, 'mag_inc');
