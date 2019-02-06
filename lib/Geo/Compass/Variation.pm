@@ -97,7 +97,7 @@ sub mag_field {
     my $X = 0;                  # magnetic field north component in nT
     my $Y = 0;                  # east component
     my $Z = 0;                  # vertical component
-    my $t = $yr - 2015;
+    my $t = $yr - WMM_RELEASE_YEAR;
     my $r = 6371200 / $geo_r;   # radius relative to geomagnetic reference
     my $R = $r * $r;
     my @c = map cos($_ * $lon), 0 .. $#WMM;
