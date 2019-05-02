@@ -1,6 +1,6 @@
 Revision history for Geo-Compass-Variation
 
-1.01 UNREL
+1.01    2019-05-02
         - changed magic number year (2015) to use the WMM_RELEASE_YEAR constant.
           (closes #3)
         - fixes issue where if perl was compiled with -Duselongdouble, several
