@@ -1,5 +1,8 @@
 Revision history for Geo-Compass-Variation
 
+1.02 UNREL
+        -
+
 1.01    2019-05-02
         - changed magic number year (2015) to use the WMM_RELEASE_YEAR constant.
           (closes #3)
