@@ -1,5 +1,8 @@
 Revision history for Geo-Compass-Variation
 
+1.04 UNREL
+        -
+
 1.03    2019-05-21
         - fix issue where tests were failing if perl was compiled with
           uselongdouble (thanks for reporting, Slaven Rezić)
