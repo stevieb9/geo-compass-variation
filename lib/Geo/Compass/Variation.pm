@@ -321,7 +321,8 @@ and longitude pair.
 See L<NOAA|https://www.ngdc.noaa.gov/geomag/WMM/DoDWMM.shtml> for details.
 
 The WMM data is currently valid from January 1, 2015 through December 31, 2019.
-This module will be updated with new WMM data as it becomes available.
+This module will be updated with new WMM data as it becomes available. (Last
+update was the 2015v2 dataset, implemented 2019-05-19).
 
 =head1 EXPORT_OK
 
