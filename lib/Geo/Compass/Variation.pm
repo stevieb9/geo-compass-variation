@@ -299,6 +299,10 @@ sub _pod_placeholder {}
 Geo::Compass::Variation - Accurately calculate magnetic declination and
 inclination
 
+=for html
+<a href="http://travis-ci.com/stevieb9/geo-compass-variation"><img src="https://www.travis-ci.com/stevieb9/geo-compass-variation.svg?branch=master"/>
+<a href='https://coveralls.io/github/stevieb9/geo-compass-variation?branch=master'><img src='https://coveralls.io/repos/stevieb9/geo-compass-variation/badge.svg?branch=master&service=github' alt='Coverage Status' /></a>
+
 =head1 SYNOPSIS
 
     use Geo::Compass::Variation qw(mag_dec mag_inc);

@@ -1,7 +1,7 @@
 Revision history for Geo-Compass-Variation
 
 1.05 UNREL
-        -
+        - Added CI and test coverage badges
 
 1.04    2020-12-16
         - We now warn and not die if WMM data is out of year range
