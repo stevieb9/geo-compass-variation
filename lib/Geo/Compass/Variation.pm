@@ -3,7 +3,7 @@ package Geo::Compass::Variation;
 use strict; 
 use warnings;
 
-our $VERSION = '1.05';
+our $VERSION = '1.06';
 
 use Carp qw(croak);
 use Exporter qw(import);
