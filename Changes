@@ -1,5 +1,8 @@
 Revision history for Geo-Compass-Variation
 
+1.05 UNREL
+        -
+
 1.04    2020-12-16
         - We now warn and not die if WMM data is out of year range
         - Changed to Carp::croak from die
