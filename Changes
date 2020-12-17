@@ -1,5 +1,8 @@
 Revision history for Geo-Compass-Variation
 
+1.07 UNREL
+        -
+
 1.06    2020-12-07
         - Slightly modified tests as Testers was producing slightly different
           floats for results which was breaking tests
